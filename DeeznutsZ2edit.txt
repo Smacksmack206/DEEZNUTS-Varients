@@ -46,9 +46,9 @@ chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
 echo 145000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
-echo 300000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
+echo 652800 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
 echo 86666 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-echo 71 300000:70 422000:77 652800:79 729600:83 883000:87 960000:92 1036800:9 126700:96 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+echo 71 300000:30 422000:77 652800:79 729600:83 883000:87 960000:92 1036800:9 126700:96 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
 echo 155 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
 echo 24000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
@@ -79,7 +79,7 @@ chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/interactive/target_loads
 chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/interactive/*
 #Tweak Interactive Governor
 echo 160000 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/timer_slack
-echo 307200 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/hispeed_freq
+echo 729600 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/hispeed_freq
 echo 110000 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/timer_rate
 echo 35000 729600:145000 960000:205000 1267000:175000 1497600:80000 1728000:180000 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/above_hispeed_delay
 echo 400 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/go_hispeed_load
