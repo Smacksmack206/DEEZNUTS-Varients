@@ -1,11 +1,11 @@
 #!/system/bin/sh
 
 #Settings By: Smacksmack206
-#Device: Xperia XZ
+#Device: Xperia Z2
 #Codename: Deeznuts
 #Build Status: Stable
 #Last Updated: 6/3/2017
-#Notes: THIS IS THE BEST THUS FAR
+#Notes: experimental af ahaha
 #TWEAKS_BEGIN
 echo ""
 echo '*************************'
@@ -19,7 +19,7 @@ echo Applying 'Deeznuts'
 echo Advanced Kernel Settings
 echo ------------------------------------------------------------
 echo Settings By: smacksmack206
-echo "Device: Xperia XZ"
+echo "Device: Xperia Z2"
 echo Codename: 'Deeznuts'
 echo Build Status: EXPERIMENTAL
 echo Last Updated: 6/3/2017
