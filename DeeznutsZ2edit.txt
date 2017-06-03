@@ -4,14 +4,15 @@
 #Device: Xperia XZ
 #Codename: Deeznuts
 #Build Status: Stable
-#Last Updated: 4/10/2017
+#Last Updated: 6/3/2017
 #Notes: THIS IS THE BEST THUS FAR
 #TWEAKS_BEGIN
 echo ""
 echo '*************************'
 echo PSA:
 echo this governor has standed the test of time
-echo can get up to 12 hrs SOT
+echo can get up to 12 hrs SOT on xperia XZ
+echo note: i dont have a z2 or z3 so varients might not work as well
 echo '*************************'
 echo ------------------------------------------------------------
 echo Applying 'Deeznuts'
@@ -20,8 +21,8 @@ echo ------------------------------------------------------------
 echo Settings By: smacksmack206
 echo "Device: Xperia XZ"
 echo Codename: 'Deeznuts'
-echo Build Status: STABLE
-echo Last Updated: 4/10/2017
+echo Build Status: EXPERIMENTAL
+echo Last Updated: 6/3/2017
 echo 
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sleep 0.3
@@ -37,12 +38,12 @@ chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 echo No LITTLE Cluster Overclocking detected. 
 echo Applying appropriate values.
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-echo 1593600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 1593MHz         
+echo 226500 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 1593MHz         
 chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 #122880:96 to encourage little cluster to stay on higher frequency
 #1036800:9 to encourage little cluster to SKIP this frequency as it is inefficient
-echo 71 480000:70 556800:77 652800:79 729600:83 844800:87 960000:92 1036800:9 1228800:96 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+echo 71 300000:70 422000:77 652800:79 729600:83 883000:87 960000:92 1036800:9 126700:96 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
 chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 
 #Duality Kernel and Androplus will no longer support oc
@@ -51,9 +52,9 @@ chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
 echo 145000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
-echo 307200 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
+echo 300000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
 echo 86666 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-echo 0 729600:175000 844800:95000 960000:185000 1228800:175000 1478400:120000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+echo 71 300000:70 422000:77 652800:79 729600:83 883000:87 960000:92 1036800:9 126700:96 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
 echo 155 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
 echo 24000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
