@@ -3,7 +3,7 @@
 #Settings By: Smacksmack206
 #Device: Xperia Z2
 #Codename: Deeznuts
-#Build Status: Stable
+#Build Status: Testing
 #Last Updated: 6/3/2017
 #Notes: experimental af ahaha
 #TWEAKS_BEGIN
