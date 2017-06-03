@@ -41,14 +41,14 @@ chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 #122880:96 to encourage little cluster to stay on higher frequency
 #1036800:9 to encourage little cluster to SKIP this frequency as it is inefficient
-echo 71 300000:70 422000:77 652800:79 729600:83 883000:87 960000:92 1036800:9 126700:96 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+echo 71 300000:9 422000:77 652800:99 729600:83 883000:87 960000:92 1036800:9 126700:96 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
 chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
 echo 145000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
 echo 652800 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
 echo 86666 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-echo 71 300000:30 422000:77 652800:79 729600:83 883000:87 960000:92 1036800:9 126700:96 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+echo 71 300000:9 422000:77 652800:99 729600:83 883000:87 960000:92 1036800:9 126700:96 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
 echo 155 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
 echo 24000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
