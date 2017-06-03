@@ -65,6 +65,39 @@ if [ -e "/sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction" ]; 
     echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction
 fi
 
+chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
+echo interactive > /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
+chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
+#Grab Maximum Achievable Frequency for the Core 3
+#Temporarily change permissions to governor files for the Big cluster to set the maximum frequency to 2150MHz
+chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
+echo 2150400 > /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq     #Core 3 Maximum Frequency = 2150MHz         
+chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
+chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/interactive/target_loads
+echo 65 729600:75 883200:87 960000:80 1036800:99 1401600:97 1824000:99 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/target_loads 
+chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/interactive/target_loads
+chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/interactive/*
+#Tweak Interactive Governor
+echo 160000 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/timer_slack
+echo 307200 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/hispeed_freq
+echo 110000 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/timer_rate
+echo 35000 729600:145000 960000:205000 1267000:175000 1497600:80000 1728000:180000 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/above_hispeed_delay
+echo 400 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/go_hispeed_load
+echo 0 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/min_sample_time
+echo 0 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/max_freq_hysteresis
+echo 1 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/ignore_hispeed_on_notif
+echo 0 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/boost
+echo 1 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/fast_ramp_down
+echo 0 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/align_windows
+echo 1 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/use_migration_notif
+echo 0 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/use_sched_load
+echo 0 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/boostpulse_duration
+echo 0 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/io_is_busy
+if [ -e "/sys/devices/system/cpu/cpu3/cpufreq/interactive/enable_prediction" ]; then
+    chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/interactive/enable_prediction
+echo 0 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/enable_prediction
+fi
+
 #Disable TouchBoost
 echo Disabling TouchBoost
     if [ -e "/sys/module/msm_performance/parameters/touchboost" ]; then
@@ -133,15 +166,15 @@ echo Tweaking other various Settings
 
 
 
-#Replaced with PDesire's values
 echo ·Memory Values
 echo '0' > /proc/sys/vm/laptop_mode
 echo '60' > /proc/sys/vm/overcommit_ratio
 echo '70' > /proc/sys/vm/vfs_cache_pressure
 echo '20' > /proc/sys/vm/dirty_ratio
-echo '10' > /proc/sys/vm/dirty_background_ratio
+echo '5' > /proc/sys/vm/dirty_background_ratio
 echo '2000' > /proc/sys/vm/dirty_expire_centisecs
 echo '3000' > /proc/sys/vm/dirty_writeback_centisecs
+echo '4096' > /proc/sys/vm/min_free_kbytes
 if [ -e "/sys/module/lowmemorykiller/parameters/enable_adaptive_lmk" ]; then
 chmod 666 /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
 chown root /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
