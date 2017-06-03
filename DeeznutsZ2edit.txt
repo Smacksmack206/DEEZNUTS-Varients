@@ -39,9 +39,7 @@ chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 echo 226500 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 2265MHz         
 chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-#122880:96 to encourage little cluster to stay on higher frequency
-#1036800:9 to encourage little cluster to SKIP this frequency as it is inefficient
-echo 71 300000:9 422000:77 652800:99 729600:83 883000:87 960000:92 1036800:9 126700:96 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+echo 71 300000:9 422400:77 652800:99 729600:83 883200:87 960000:92 1036800:9 126700:96 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
 chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
@@ -118,18 +116,6 @@ echo 1 > /sys/module/msm_thermal/core_control/enabled
 fi
 if [ -e "/sys/module/msm_thermal/parameters/enabled" ]; then
 echo N > /sys/module/msm_thermal/parameters/enabled
-fi
-#Tweak HMP Scheduler to feed the Big cluster more tasks
-sleep 0.3
-echo Tweaking HMP Scheduler for correcting BIG Cluster utilization
-echo 2 > /proc/sys/kernel/sched_window_stats_policy
-echo 90 > /proc/sys/kernel/sched_upmigrate
-echo 65 > /proc/sys/kernel/sched_downmigrate
-echo 7 > /proc/sys/kernel/sched_spill_nr_run
-echo 97 > /proc/sys/kernel/sched_spill_load
-echo 30 > /proc/sys/kernel/sched_init_task_load
-if [ -e "/proc/sys/kernel/sched_heavy_task" ]; then
-    echo 96 > /proc/sys/kernel/sched_heavy_task
 fi
 echo 7 > /proc/sys/kernel/sched_upmigrate_min_nice
 echo 4 > /proc/sys/kernel/sched_ravg_hist_size
