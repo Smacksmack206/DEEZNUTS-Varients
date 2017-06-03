@@ -36,7 +36,7 @@ chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 #Grab Maximum Achievable Frequency for the Cluster 
 echo Applying appropriate values.
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-echo 226500 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 1593MHz         
+echo 226500 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 2265MHz         
 chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 #122880:96 to encourage little cluster to stay on higher frequency
