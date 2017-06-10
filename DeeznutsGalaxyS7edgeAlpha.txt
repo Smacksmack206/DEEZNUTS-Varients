@@ -1,10 +1,10 @@
 #!/system/bin/sh
 
 #Settings By: Smacksmack206
-#Device: Xperia Z2
+#Device: Galaxy S7edge
 #Codename: Deeznuts
 #Build Status: Testing
-#Last Updated: 6/3/2017
+#Last Updated: 6/10/2017
 #Notes: experimental af ahaha
 #TWEAKS_BEGIN
 echo ""
@@ -12,14 +12,14 @@ echo '*************************'
 echo PSA:
 echo this governor has standed the test of time
 echo can get up to 12 hrs SOT on xperia XZ
-echo note: i dont have a z2 or z3 so varients might not work as well
+echo note: i dont have any phones of the varients i will make so it might not work as well
 echo '*************************'
 echo ------------------------------------------------------------
 echo Applying 'Deeznuts'
 echo Advanced Kernel Settings
 echo ------------------------------------------------------------
 echo Settings By: smacksmack206
-echo "Device: Xperia Z2"
+echo "Device: Galaxy S7edge"
 echo Codename: 'Deeznuts'
 echo Build Status: EXPERIMENTAL
 echo Last Updated: 6/3/2017
@@ -39,14 +39,14 @@ chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 echo 226500 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 2265MHz         
 chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-echo 71 300000:89 422400:77 652800:99 729600:83 883200:87 960000:62 1036800:6 1190400:10 126700:96 1497600:20 1574400:12 1728000:13 1958400:8 2265600:11 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+echo 71 300000:89 422400:77 652800:99 729600:83 883200:87 960000:62 1036800:6 1190400:10 1267200:96 1497600:20 1574400:12 1728000:13 1958400:8 2265600:11 245760015 2496000:18 2572800:19 2649600:21 2726400:23 2880000:40 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
 chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
 echo 145000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
 echo 422000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
 echo 86666 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-echo 0 729600:175000 883200:95000 960000:185000 126700:175000 1497600:120000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+echo 0 300000:9999 422400:77 652800:99 729600:83 883200:87 960000:6000 1036800:6 1190400:10 1267200:96 1497600:20 1574400:12 1728000:13 1958400:8 2265600:11 245760015 2496000:18 2572800:19 2649600:21 2726400:23 2880000:40 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
 echo 155 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
 echo 24000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
@@ -61,6 +61,39 @@ echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
 if [ -e "/sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction" ]; then
     chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction
     echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction
+fi
+
+chmod 644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+echo interactive > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
+#Grab Maximum Achievable Frequency for the Core 1
+#Temporarily change permissions to governor files for the Big cluster to set the maximum frequency to 2150MHz
+chmod 644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+echo 2150400 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq     #Core 3 Maximum Frequency = 2150MHz         
+chmod 444 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+chmod 644 /sys/devices/system/cpu/cpu1/cpufreq/interactive/target_loads
+echo 65 729600:95 883200:99 960000:80 1036800:50 1401600:97 1824000:70 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/target_loads 
+chmod 444 /sys/devices/system/cpu/cpu1/cpufreq/interactive/target_loads
+chmod 644 /sys/devices/system/cpu/cpu1/cpufreq/interactive/*
+#Tweak Interactive Governor
+echo 160000 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/timer_slack
+echo 729600 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/hispeed_freq
+echo 110000 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/timer_rate
+echo 300000:9999 422400:77 652800:99 729600:83 883200:87 960000:99999 1036800:6 1190400:10 1267200:96 1497600:20 1574400:12 1728000:13 1958400:8 2265600:11 245760015 2496000:18 2572800:19 2649600:21 2726400:23 2880000:40 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/above_hispeed_delay
+echo 400 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/go_hispeed_load
+echo 0 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/min_sample_time
+echo 0 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/max_freq_hysteresis
+echo 1 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/ignore_hispeed_on_notif
+echo 0 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/boost
+echo 1 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/fast_ramp_down
+echo 0 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/align_windows
+echo 1 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/use_migration_notif
+echo 0 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/use_sched_load
+echo 0 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/boostpulse_duration
+echo 0 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/io_is_busy
+if [ -e "/sys/devices/system/cpu/cpu1/cpufreq/interactive/enable_prediction" ]; then
+    chmod 644 /sys/devices/system/cpu/cpu1/cpufreq/interactive/enable_prediction
+echo 0 > /sys/devices/system/cpu/cpu1/cpufreq/interactive/enable_prediction
 fi
 
 chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
@@ -79,7 +112,7 @@ chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/interactive/*
 echo 160000 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/timer_slack
 echo 729600 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/hispeed_freq
 echo 110000 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/timer_rate
-echo 35000 729600:145000 960000:205000 1267200:175000 1497600:80000 1728000:180000 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/above_hispeed_delay
+echo 300000:9999 422400:77 652800:99 729600:83 883200:87 960000:99999 1036800:6 1190400:10 1267200:96 1497600:20 1574400:12 1728000:13 1958400:8 2265600:11 245760015 2496000:18 2572800:19 2649600:21 2726400:23 2880000:40 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/above_hispeed_delay
 echo 400 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/go_hispeed_load
 echo 0 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/max_freq_hysteresis
@@ -95,6 +128,7 @@ if [ -e "/sys/devices/system/cpu/cpu3/cpufreq/interactive/enable_prediction" ]; 
     chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/interactive/enable_prediction
 echo 0 > /sys/devices/system/cpu/cpu3/cpufreq/interactive/enable_prediction
 fi
+
 
 #Disable TouchBoost
 echo Disabling TouchBoost
