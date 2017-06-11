@@ -39,7 +39,7 @@ chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 echo 226500 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 2265MHz         
 chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-echo 71 300000:89 422400:77 652800:99 729600:83 883200:87 960000:62 1036800:6 1190400:10 126700:96 1497600:20 1574400:12 1728000:13 1958400:8 2265600:11 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+echo 71 300000:90 422400:70 652800:85 729600:89 883200:99 960000:87 1036800:36 1190400:10 126700:9999 1497600:20 1574400:12 1728000:13 1958400:8 2265600:11 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
 chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
