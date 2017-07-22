@@ -4,10 +4,10 @@
 #This program is distributed in the hope that it will be useful,
 #but WITHOUT ANY WARRANTY; without even the implied warranty #of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. #See the GNU General Public License for more details.
 #Settings By: Smacksmack206
-#Device: Xperia XZ
+#Device: "Galaxy S5 Plus"
 #Codename: Deeznuts
 #Build Status: Stable
-#Last Updated: 7/2/2017
+#Last Updated: 7/22/2017
 #Notes: THIS IS THE BEST THUS FAR
 #TWEAKS_BEGIN
 echo ""
@@ -21,10 +21,10 @@ echo Applying 'DEEZNUTS'
 echo Advanced Kernel Settings
 echo ------------------------------------------------------------
 echo Settings By: smacksmack206
-echo "Device: Xperia XZ"
+echo "Device: "Galaxy S5 Plus"
 echo Codename: 'Deeznuts'
 echo Build Status: Version 8
-echo Last Updated: 7/1/2017
+echo Last Updated: 7/22/2017
 echo 
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo Checking Android version...
